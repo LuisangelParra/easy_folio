@@ -1,0 +1,58 @@
+name: easy_folio
+description: "A new Flutter project."
+publish_to: 'none'
+
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.6.2
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  get: ^4.7.2
+  url_launcher: ^6.3.1
+  iconsax: ^0.0.8
+  font_awesome_flutter: ^10.8.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+  #----------------- LOCAL ASSETS -----------------#
+  assets:
+    - assets/
+    - assets/images/
+    - assets/images/profile/profile.jpg
+
+  #----------------- LOCAL FONTS -----------------#
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/inter/Inter-Regular.ttf
+        - asset: assets/fonts/inter//Inter-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/inter/Inter-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/inter/Inter-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/inter/Inter-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/inter/Inter-Black.ttf
+          weight: 900
+    - family: InterDisplay
+      fonts:
+        - asset: assets/fonts/inter-display/InterDisplay-Regular.ttf
+        - asset: assets/fonts/inter-display/InterDisplay-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/inter-display/InterDisplay-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/inter-display/InterDisplay-Bold.ttf
+          weight: 700
