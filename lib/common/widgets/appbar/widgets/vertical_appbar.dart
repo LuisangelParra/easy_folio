@@ -30,7 +30,7 @@ class LVerticalAppbar extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                LProfileTileDescription(isCompact: isCompact),
+                LProfileTileDescription(isCompact: isCompact, useSubTitle: true, isMobile: false),
                 SizedBox(height: LSizes.spaceBtwItems),
                 // AppBar options
                 LOptionsList(isCompact: isCompact),

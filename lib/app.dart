@@ -23,6 +23,9 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    bool isCompact = screenWidth < 1158 ? true : false;
+    bool isMobile = screenWidth < 818 ? true : false;
     return LThemeProvider(
       themeMode: _themeMode,
       toggleTheme: _toggleTheme,
@@ -32,12 +35,27 @@ class _AppState extends State<App> {
         darkTheme: LAppTheme.darkTheme,
         home: Scaffold(
           body: Center(
-            child: Row(
-              children: [
-                LAppBar(),
-                
-              ],
-            ),
+            child: isMobile
+                ? Stack(
+                    children: [
+                      LAppBar(isCompact: isCompact, isMobile: isMobile),
+                      Expanded(child: 
+                        Center(
+                          child: Text('Contenido de la aplicación'),
+                        ),
+                      ),
+                    ],
+                  )
+                : Row(
+                    children: [
+                      LAppBar(isCompact: isCompact, isMobile: isMobile),
+                      Expanded(child: 
+                        Center(
+                          child: Text('Contenido de la aplicación'),
+                        ),
+                      ),
+                    ],
+                  ),
           ),
         ),
       ),

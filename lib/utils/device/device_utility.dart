@@ -49,7 +49,8 @@ class TDevicesUtils {
   }
 
   static double getAppBarHeight() {
-    return kToolbarHeight;
+    final double lToolbarHeight = 64;
+    return lToolbarHeight;
   }
 
 

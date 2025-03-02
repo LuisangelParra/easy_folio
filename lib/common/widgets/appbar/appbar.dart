@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:easy_folio/utils/device/device_utility.dart';
 import 'package:easy_folio/common/widgets/appbar/widgets/vertical_appbar.dart';
+import 'package:easy_folio/common/widgets/appbar/widgets/horizontal_appbar.dart';
 class LAppBar extends StatefulWidget implements PreferredSizeWidget {
-  const LAppBar({super.key});
+  const LAppBar({super.key, required this.isCompact, required this.isMobile});
+
+  final bool isCompact;
+  final bool isMobile;
 
   @override
   State<LAppBar> createState() => _LAppBarState();
@@ -15,16 +19,14 @@ class _LAppBarState extends State<LAppBar>  {
   @override
   Widget build(BuildContext context) {
     bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
-    double screenWidth = MediaQuery.of(context).size.width;
-    bool isCompact = screenWidth < 1158 ? true : false;
-    bool isMobile = screenWidth < 818 ? true : false;
 
-    double appBarWidth = isCompact ? 80 : TDevicesUtils.getAppBarWidth();
+    double appBarWidth = widget.isCompact ? 80 : TDevicesUtils.getAppBarWidth();
+    double appBarHeight = TDevicesUtils.getAppBarHeight();
 
-    if (isMobile) {
-      return Container();
+    if (widget.isMobile) {
+      return LHorizontalAppbar(appBarHeight:appBarHeight, isDarkMode: isDarkMode);
     } else {
-      return LVerticalAppbar(appBarWidth: appBarWidth, isCompact: isCompact, isDarkMode: isDarkMode);
+      return LVerticalAppbar(appBarWidth: appBarWidth, isCompact: widget.isCompact, isDarkMode: isDarkMode);
     }
   }
 }

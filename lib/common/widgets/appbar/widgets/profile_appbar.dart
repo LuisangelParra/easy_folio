@@ -8,15 +8,19 @@ class LProfileTileDescription extends StatelessWidget {
   const LProfileTileDescription({
     super.key,
     required this.isCompact,
+    required this.useSubTitle,
+    required this.isMobile,
   });
 
   final bool isCompact;
+  final bool useSubTitle;
+  final bool isMobile;
 
   @override
   Widget build(BuildContext context) {
     bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return SizedBox(
-      width: double.infinity,
+      width: isMobile ? 200 : double.infinity,
       child: Padding(
         padding: (isCompact ? EdgeInsets.zero : EdgeInsets.all(8.0)),
         child: Row(
@@ -36,24 +40,27 @@ class LProfileTileDescription extends StatelessWidget {
             if (!isCompact) ...[
                 SizedBox(width: LSizes.spaceBtwItems),
                 Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Luisangel Parra,',
+                      'Luisangel Parra',
                       style: Theme.of(context).textTheme.bodyMedium!.apply(
                         color: isDarkMode? LColors.white : LColors.jet,
                       ).copyWith(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Text(
-                      'Systems Engineer',
-                      style: Theme.of(context).textTheme.bodySmall!.apply(
-                        color: isDarkMode? LColors.white.withAlpha(154) : LColors.dimGrey,
-                      ).copyWith(
-                        fontWeight: FontWeight.w400,
+                    if (useSubTitle) ...[
+                      Text(
+                        'Systems Engineer',
+                        style: Theme.of(context).textTheme.bodySmall!.apply(
+                          color: isDarkMode? LColors.white.withAlpha(154) : LColors.dimGrey,
+                        ).copyWith(
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
-                    ),
+                    ]
                   ],
                 ),   
             ],
