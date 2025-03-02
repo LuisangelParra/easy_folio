@@ -10,10 +10,12 @@ class LOptionsSearchandTheme extends StatelessWidget {
     super.key,
     required this.isDarkMode,
     required this.isCompact,
+    required this.isMobile,
   });
 
   final bool isDarkMode;
   final bool isCompact;
+  final bool isMobile;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +45,7 @@ class LOptionsSearchandTheme extends StatelessWidget {
       )
 
       : Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: (isMobile ? MainAxisAlignment.start : MainAxisAlignment.center),
         children: [
           IconButton(
             onPressed: () {

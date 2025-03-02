@@ -36,7 +36,7 @@ class LVerticalAppbar extends StatelessWidget {
                 LOptionsList(isCompact: isCompact),
               ],
             ),
-            LOptionsSearchandTheme(isDarkMode: isDarkMode, isCompact: isCompact),
+            LOptionsSearchandTheme(isDarkMode: isDarkMode, isCompact: isCompact, isMobile: false),
           ],
         ),
       ),

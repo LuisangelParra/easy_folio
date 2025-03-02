@@ -34,29 +34,25 @@ class _AppState extends State<App> {
         theme: LAppTheme.lightTheme,
         darkTheme: LAppTheme.darkTheme,
         home: Scaffold(
-          body: Center(
-            child: isMobile
-                ? Stack(
-                    children: [
-                      LAppBar(isCompact: isCompact, isMobile: isMobile),
-                      Expanded(child: 
-                        Center(
-                          child: Text('Contenido de la aplicación'),
-                        ),
+          body: isMobile
+              ? Stack(
+                  children: [
+                    Center(
+                      child: Text('Contenido de la aplicación'),
+                    ),
+                    LAppBar(isCompact: isCompact, isMobile: isMobile),
+                  ],
+                )
+              : Row(
+                  children: [
+                    LAppBar(isCompact: isCompact, isMobile: isMobile),
+                    Expanded(child: 
+                      Center(
+                        child: Text('Contenido de la aplicación'),
                       ),
-                    ],
-                  )
-                : Row(
-                    children: [
-                      LAppBar(isCompact: isCompact, isMobile: isMobile),
-                      Expanded(child: 
-                        Center(
-                          child: Text('Contenido de la aplicación'),
-                        ),
-                      ),
-                    ],
-                  ),
-          ),
+                    ),
+                  ],
+                ),
         ),
       ),
     );

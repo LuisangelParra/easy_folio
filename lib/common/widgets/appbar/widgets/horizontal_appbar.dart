@@ -2,6 +2,7 @@ import 'package:easy_folio/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_folio/common/widgets/appbar/widgets/profile_appbar.dart';
 import 'package:easy_folio/common/widgets/appbar/widgets/options_appbar.dart';
+import 'package:easy_folio/common/widgets/appbar/widgets/search_theme_appbar.dart';
 
 
 
@@ -55,12 +56,22 @@ class _LHorizontalAppbarState extends State<LHorizontalAppbar> {
           ),
           AnimatedContainer(
             duration: Duration(milliseconds: 1),
-            height: _isMenuOpen ? 532 : 0,
+            height: _isMenuOpen ? 490 : 0,
             width: double.infinity,
-            color: widget.isDarkMode ? LColors.eerieBlack : LColors.seaGreen,
+            color: widget.isDarkMode ? LColors.eerieBlack : LColors.white,
             child: Padding(
               padding: const EdgeInsets.all(16.0),
-              child: LOptionsList(isCompact: false),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  LOptionsList(isCompact: false),
+                  Divider(
+                    color: LColors.black,
+                    thickness: 0.1,
+                  ),
+                  LOptionsSearchandTheme(isDarkMode: widget.isDarkMode, isCompact: false, isMobile: true),
+                ],
+              ),
             ),
           )
         ],
