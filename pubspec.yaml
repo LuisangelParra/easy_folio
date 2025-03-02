@@ -30,7 +30,8 @@ flutter:
   assets:
     - assets/
     - assets/images/
-    - assets/images/profile/profile.jpg
+    - assets/images/projects/
+    - assets/images/profile/
 
   #----------------- LOCAL FONTS -----------------#
   fonts:

@@ -27,7 +27,7 @@ class LAppTheme {
     brightness: Brightness.dark,
     primaryColor: LColors.white,
     textTheme: TTexTheme.darkTextTheme,
-    scaffoldBackgroundColor: LColors.night,
+    scaffoldBackgroundColor: LColors.nightLight,
     appBarTheme: LAppBarTheme.darkAppBarTheme,
     outlinedButtonTheme: LOutlinedButtonTheme.darkOutlinedButtonTheme,
     elevatedButtonTheme: LElevatedButtonTheme.darkElevatedButtonTheme,

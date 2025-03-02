@@ -4,7 +4,7 @@ class LThemeProvider extends InheritedWidget {
   final ThemeMode themeMode;
   final VoidCallback toggleTheme;
 
-  const LThemeProvider({
+  LThemeProvider({
     super.key,
     required this.themeMode,
     required this.toggleTheme,

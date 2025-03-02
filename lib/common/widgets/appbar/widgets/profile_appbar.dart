@@ -53,7 +53,7 @@ class LProfileTileDescription extends StatelessWidget {
                     ),
                     if (useSubTitle) ...[
                       Text(
-                        'Systems Engineer',
+                        'Software Engineer',
                         style: Theme.of(context).textTheme.bodySmall!.apply(
                           color: isDarkMode? LColors.white.withAlpha(154) : LColors.dimGrey,
                         ).copyWith(

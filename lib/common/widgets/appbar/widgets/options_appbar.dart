@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:easy_folio/utils/constants/sizes.dart';
 import 'package:easy_folio/common/widgets/appbar/widgets/navlink_appbar.dart';
-
-import 'package:easy_folio/utils/constants/colors.dart';
-
-import "package:iconsax/iconsax.dart";
+import 'package:easy_folio/utils/providers/view_provider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import "package:iconsax/iconsax.dart";
 
+import 'package:easy_folio/utils/constants/sizes.dart';
+import 'package:easy_folio/utils/constants/colors.dart';
 class LOptionsList extends StatefulWidget {
   const LOptionsList({
     super.key,
@@ -20,17 +19,11 @@ class LOptionsList extends StatefulWidget {
 }
 
 class _LOptionsListState extends State<LOptionsList> {
-
-  int selectedIndex = 0; // Índice del nav seleccionado
-
-  void _onNavItemSelected(int index) {
-    setState(() {
-      selectedIndex = index;
-    });
-  }
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
+    final viewIndex = LViewProvider.of(context)?.viewIndex;
     bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return Column(
       children: [
@@ -40,9 +33,12 @@ class _LOptionsListState extends State<LOptionsList> {
                         LNavLink(
                           index: 0,
                           selectedIndex: selectedIndex,
-                          title: (widget.isCompact ? null : 'Home'),
+                          title: (widget.isCompact ? null : 'Homepage'),
                           leadingIcon: Iconsax.home,
-                          onPressed: _onNavItemSelected,
+                          onPressed: (index) {
+                            setState(() => selectedIndex = index); 
+                            viewIndex?.value = index; 
+                          },
                           isCompact: widget.isCompact,
                         ),
                         SizedBox(height: LSizes.sm/2),
@@ -51,7 +47,10 @@ class _LOptionsListState extends State<LOptionsList> {
                           selectedIndex: selectedIndex,
                           title: (widget.isCompact ? null : 'Projects'),
                           leadingIcon: Iconsax.folder_open,
-                          onPressed: _onNavItemSelected,
+                          onPressed: (index) {
+                            setState(() => selectedIndex = index); 
+                            viewIndex?.value = index; 
+                          },
                           isCompact: widget.isCompact,
                         ),
                         SizedBox(height: LSizes.sm/2),
@@ -60,7 +59,10 @@ class _LOptionsListState extends State<LOptionsList> {
                           selectedIndex: selectedIndex,
                           title: (widget.isCompact ? null : 'About'),
                           leadingIcon: Iconsax.user,
-                          onPressed: _onNavItemSelected,
+                          onPressed: (index) {
+                            setState(() => selectedIndex = index); 
+                            viewIndex?.value = index; 
+                          },
                           isCompact: widget.isCompact,
                         ),
                         SizedBox(height: LSizes.sm/2),
@@ -69,7 +71,10 @@ class _LOptionsListState extends State<LOptionsList> {
                           selectedIndex: selectedIndex,
                           title: (widget.isCompact ? null : 'Blog'),
                           leadingIcon: Iconsax.pen_tool,
-                          onPressed: _onNavItemSelected,
+                          onPressed: (index) {
+                            setState(() => selectedIndex = index); 
+                            viewIndex?.value = index; 
+                          },
                           isCompact: widget.isCompact,
                         ),
                         SizedBox(height: LSizes.sm/2),
@@ -78,7 +83,10 @@ class _LOptionsListState extends State<LOptionsList> {
                           selectedIndex: selectedIndex,
                           title: (widget.isCompact ? null : 'Contact'),
                           leadingIcon: Iconsax.message_square,
-                          onPressed: _onNavItemSelected,
+                          onPressed: (index) {
+                            setState(() => selectedIndex = index); 
+                            viewIndex?.value = index; 
+                          },
                           isCompact: widget.isCompact,
                         ),
                       ],
@@ -106,7 +114,7 @@ class _LOptionsListState extends State<LOptionsList> {
                       selectedIndex: selectedIndex,
                       title: (widget.isCompact ? null : 'LinkedIn'),
                       leadingIcon: FontAwesomeIcons.linkedin,
-                      onPressed: _onNavItemSelected,
+                      onPressed: (_) {},
                       isCompact: widget.isCompact,
                     ),
                     SizedBox(height: LSizes.sm/2),
@@ -114,7 +122,7 @@ class _LOptionsListState extends State<LOptionsList> {
                       selectedIndex: selectedIndex,
                       title: (widget.isCompact ? null : 'Github'),
                       leadingIcon: FontAwesomeIcons.github,
-                      onPressed: _onNavItemSelected,
+                      onPressed: (_) {},
                       isCompact: widget.isCompact,
                     ),
                     SizedBox(height: LSizes.sm/2),
@@ -122,7 +130,7 @@ class _LOptionsListState extends State<LOptionsList> {
                       selectedIndex: selectedIndex,
                       title: (widget.isCompact ? null : 'Instagram'),
                       leadingIcon: FontAwesomeIcons.instagram,
-                      onPressed: _onNavItemSelected,
+                      onPressed: (_) {},
                       isCompact: widget.isCompact,
                     ),
                   ],

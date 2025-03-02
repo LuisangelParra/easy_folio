@@ -26,10 +26,11 @@ class _LHorizontalAppbarState extends State<LHorizontalAppbar> {
         children: [
           Container(
                 decoration: BoxDecoration(
+                  color: widget.isDarkMode ? LColors.eerieBlack : LColors.white,
                   border: Border(
                     bottom: BorderSide(
-                      color: LColors.black, // Color del borde
-                      width: 0.1, // Grosor del borde
+                      color: widget.isDarkMode ? LColors.white : LColors.black, // Color del borde
+                      width: 0.2, // Grosor del borde
                     ),
                   ),
                 ),
@@ -58,7 +59,17 @@ class _LHorizontalAppbarState extends State<LHorizontalAppbar> {
             duration: Duration(milliseconds: 1),
             height: _isMenuOpen ? 490 : 0,
             width: double.infinity,
-            color: widget.isDarkMode ? LColors.eerieBlack : LColors.white,
+            decoration: BoxDecoration(
+              color: widget.isDarkMode ? LColors.eerieBlack : LColors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: 0.1), // Color de la sombra
+                  blurRadius: 6, // Suavidad de la sombra
+                  offset: Offset(0, 3), // Desplazamiento en X e Y
+                ),
+              ],
+
+            ),
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(

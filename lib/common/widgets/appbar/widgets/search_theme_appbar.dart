@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:easy_folio/utils/constants/colors.dart';
-import 'package:easy_folio/utils/theme/theme_provider.dart';
+import 'package:easy_folio/utils/providers/theme_provider.dart';
 
 
 import "package:iconsax/iconsax.dart";
