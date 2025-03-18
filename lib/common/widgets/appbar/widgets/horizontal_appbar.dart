@@ -57,15 +57,15 @@ class _LHorizontalAppbarState extends State<LHorizontalAppbar> {
           ),
           AnimatedContainer(
             duration: Duration(milliseconds: 1),
-            height: _isMenuOpen ? 490 : 0,
+            height: _isMenuOpen ? 500 : 0,
             width: double.infinity,
             decoration: BoxDecoration(
               color: widget.isDarkMode ? LColors.eerieBlack : LColors.white,
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.1), // Color de la sombra
-                  blurRadius: 6, // Suavidad de la sombra
-                  offset: Offset(0, 3), // Desplazamiento en X e Y
+                  color: Colors.black.withValues(alpha: 0.1),
+                  blurRadius: 6,
+                  offset: Offset(0, 3),
                 ),
               ],
 
@@ -77,8 +77,8 @@ class _LHorizontalAppbarState extends State<LHorizontalAppbar> {
                 children: [
                   LOptionsList(isCompact: false),
                   Divider(
-                    color: LColors.black,
-                    thickness: 0.1,
+                  color: widget.isDarkMode ? LColors.white.withValues(alpha: 0.06) : LColors.black.withValues(alpha: 0.08),
+                    thickness: 1,
                   ),
                   LOptionsSearchandTheme(isDarkMode: widget.isDarkMode, isCompact: false, isMobile: true),
                 ],

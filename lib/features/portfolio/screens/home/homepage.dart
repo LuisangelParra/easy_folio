@@ -1,30 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:easy_folio/utils/constants/sizes.dart';
 import 'package:easy_folio/features/portfolio/screens/home/widgets/header_home.dart';
+import 'package:easy_folio/features/portfolio/screens/home/widgets/selected_work_home.dart';
+import 'package:easy_folio/common/widgets/cards/blog_card.dart';
+
+
 import 'package:easy_folio/utils/constants/image_strings.dart';
 import 'package:easy_folio/utils/constants/colors.dart';
 
 class LHomepage extends StatelessWidget {
-  const LHomepage({super.key, required this.isMobile});
+  const LHomepage({super.key, required this.isMobile, required this.isCompact});
 
   final bool isMobile;
+  final bool isCompact;
 
   @override
   Widget build(BuildContext context) {
     bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    int numberEntries = 4;
+    
     return Padding(
-      padding: isMobile ? EdgeInsets.symmetric(horizontal: 20, vertical: 40) : EdgeInsets.all(80),
+      padding: isMobile
+          ? EdgeInsets.symmetric(horizontal: 20, vertical: 40)
+          : isCompact
+              ? EdgeInsets.symmetric(horizontal: 25, vertical: 40)
+              : EdgeInsets.all(80),
       child: Column(
         children: [
           LHeaderHome(isMobile: isMobile, isDarkMode: isDarkMode),
           SizedBox(height: LSizes.spaceBtwSections * 2.5),
+          LWorkHome(isMobile: isMobile, isDarkMode: isDarkMode),
+          SizedBox(height: LSizes.spaceBtwSections * 2.5),
           SizedBox(
-            width: isMobile ? double.infinity : 720,
+            width: isMobile ? double.infinity : 720,  
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Selected Work',
+                  'Blog',
                   style: Theme.of(context).textTheme.headlineMedium!.apply(
                         color: isDarkMode ? LColors.white : LColors.jet,
                       ).copyWith(
@@ -32,17 +45,23 @@ class LHomepage extends StatelessWidget {
                       ),
                 ),
                 SizedBox(height: LSizes.spaceBtwSections),
-                GridView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: isMobile ? 1 : 2,
-                    crossAxisSpacing: LSizes.spaceBtwItems,
-                    mainAxisSpacing: LSizes.spaceBtwItems,
-                    childAspectRatio: 1, // Ajusta esto si es necesario
+                Column(
+                  children: 
+                  List.generate(
+                    numberEntries,
+                    (index) => Column(
+                      children: [
+                        LBlogItem(
+                          isDarkMode: isDarkMode,
+                          isMobile: isMobile,
+                          date: 'August 2, 2024',
+                          title: 'The Future of UX: Embracing AI and Machine Learning',
+                          image: '../../../../../${LImages.blog}',
+                        ),
+                        SizedBox(height: LSizes.spaceBtwSections * 1.5),
+                      ],
+                    ),
                   ),
-                  itemCount: 2, // Número de proyectos
-                  itemBuilder: (context, index) => _buildProjectCard(context, isDarkMode),
                 ),
               ],
             ),
@@ -52,35 +71,8 @@ class LHomepage extends StatelessWidget {
     );
   }
 
-  Widget _buildProjectCard(BuildContext context, bool isDarkMode) {
-    return SizedBox(
-      height: 348,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            height: 260, // Ajustado para dejar espacio para el texto
-            width: double.infinity,
-            decoration: BoxDecoration(
-              shape: BoxShape.rectangle,
-              borderRadius: BorderRadius.circular(12),
-              image: DecorationImage(
-                image: AssetImage('../../../../../${LImages.project}'),
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          SizedBox(height: LSizes.spaceBtwItems),
-          Text(
-            'Project Name',
-            style: Theme.of(context).textTheme.bodyMedium!.apply(
-                  color: isDarkMode ? LColors.white : LColors.jet,
-                ).copyWith(
-                  fontWeight: FontWeight.w600,
-                ),
-          ),
-        ],
-      ),
-    );
-  }
+  
+
+
 }
+

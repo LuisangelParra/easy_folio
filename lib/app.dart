@@ -31,10 +31,10 @@ class _AppState extends State<App> {
     });
   }
 
-  Widget _getView(int index, bool isMobile) {
+  Widget _getView(int index, bool isMobile, bool isCompact) {
     switch (index) {
       case 0:
-        return LHomepage(isMobile: isMobile,);
+        return LHomepage(isMobile: isMobile, isCompact: isCompact);
       case 1:
         return Text('Vista 2', style: TextStyle(fontSize: 24));
       case 2:
@@ -60,6 +60,7 @@ class _AppState extends State<App> {
         viewIndex: _viewIndex,
         child: MaterialApp(
           themeMode: _themeMode,
+          debugShowCheckedModeBanner: false,
           theme: LAppTheme.lightTheme,
           darkTheme: LAppTheme.darkTheme,
           home: Scaffold(
@@ -74,7 +75,7 @@ class _AppState extends State<App> {
                             builder: (context, index, child) {
                               return LViewContainer(
                                 key: _viewContainerKey,
-                                child: _getView(index, isMobile),
+                                child: _getView(index, isMobile, isCompact),
                               );
                             },
                           ),
@@ -94,7 +95,7 @@ class _AppState extends State<App> {
                               builder: (context, index, child) {
                                 return LViewContainer(
                                   key: _viewContainerKey,
-                                  child: _getView(index, isMobile),
+                                  child: _getView(index, isMobile, isCompact),
                                 );
                               },
                             ),

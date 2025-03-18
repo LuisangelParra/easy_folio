@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:easy_folio/features/portfolio/screens/home/widgets/chip_location_home.dart';
 import 'package:easy_folio/features/portfolio/screens/home/widgets/subtitle_home.dart';
-import 'package:easy_folio/common/widgets/buttons/outlined_button.dart';
 import 'package:easy_folio/common/widgets/buttons/elevated_button.dart';
+import 'package:easy_folio/features/portfolio/screens/home/widgets/copy_button.dart';
 
 import 'package:easy_folio/utils/constants/sizes.dart';
 import 'package:easy_folio/utils/constants/colors.dart';
-import 'package:iconsax/iconsax.dart';
 
 
 class LHeaderHome extends StatelessWidget {
@@ -69,7 +68,7 @@ class LHeaderHome extends StatelessWidget {
               children: [
                 LElevatedButton(isDarkMode: isDarkMode, isMobile: isMobile, text: 'About', onPressed: () {}),
                 SizedBox(height: LSizes.spaceBtwItems),
-                LOutlinedButton(isDarkMode: isDarkMode, isMobile: isMobile, text: 'Copy email', onPressed: () {}, icon: Iconsax.copy,),
+                LCopyButton(isDarkMode: isDarkMode, isMobile: isMobile, textToCopy: "lfaria@uninorte.edu.co",),
               ],
             ) 
             : 
@@ -77,7 +76,7 @@ class LHeaderHome extends StatelessWidget {
               children: [
                 LElevatedButton(isDarkMode: isDarkMode, isMobile: isMobile, text: 'About', onPressed: () {}),
                 SizedBox(width: LSizes.spaceBtwItems),
-                LOutlinedButton(isDarkMode: isDarkMode, isMobile: isMobile, text: 'Copy email', onPressed: () {}, icon: Iconsax.copy,),
+                LCopyButton(isDarkMode: isDarkMode, isMobile: isMobile, textToCopy: "lfaria@uninorte.edu.co",),
               ],
             ),
         ],
